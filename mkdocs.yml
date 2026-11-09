@@ -1,0 +1,89 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+site_name: Rocket Hopper
+site_description: Engineering documentation for the Rocket Hopper project
+
+theme:
+  name: material
+  language: de
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - content.code.copy
+    - content.tooltips
+
+nav:
+  - Start: index.md
+  - Projekt:
+      - Überblick: project/overview.md
+      - Roadmap: project/roadmap.md
+  - Fast Simulator:
+      - Überblick: fast_sim/index.md
+
+      - Grundlagen:
+        - Koordinatensystem: fast_sim/coordinate_system.md
+        - Zustand und Eingänge: fast_sim/state_and_inputs.md
+        - Dynamik: fast_sim/dynamics.md
+
+      - Architektur und Simulation:
+        - Softwarearchitektur: fast_sim/architecture.md
+        # - Hopper-System: fast_sim/system.md
+        - Aktuatormodelle: fast_sim/actuators.md
+        - Numerische Integration: fast_sim/numerical_integration.md
+        - Simulationsläufe: fast_sim/simulation_runs.md
+        - Visualisierung: fast_sim/visualization.md
+
+      - Landung:
+        - Lande-Geometrie: fast_sim/landing/landing_geometry.md
+        - Landungs-Erkennung: fast_sim/landing/touchdown_detection.md
+        - Landing Guidance: fast_sim/landing/landing_guidance.md
+        - Minimale Kontaktdynamik: fast_sim/landing/contact_dynamics.md
+        - Simultane Landung der Landebeine: fast_sim/landing/simultaneous_contact_impact.md
+        - Evaluation der Landung: fast_sim/landing/landing_evaluation.md
+
+      - Regelung:
+          - Überblick: fast_sim/control/index.md
+          - Lageregelung: fast_sim/control/attitude.md
+          - Höhenregelung: fast_sim/control/altitude.md
+          - Horizontale Positionsregelung: fast_sim/control/horizontal_position.md
+    
+      - Beispiele:
+        - Open Loop mit konstantem Gimbalwinkel: fast_sim/examples/open_loop_constant_gimbal.md
+        - Attitude- und Altitude-Stabilisierung: fast_sim/examples/attitude_altitude_stabilization.md
+        - Horizonale Positionsstabilisierung: fast_sim/examples/position_stabilization.md
+        - Landungen: fast_sim/examples/landing_scenarios.md
+
+  - Designentscheidungen:
+      - Fast Simulator im Monorepo: decisions/0001-fast-simulator.md
+      - Koordinatenkonventionen: decisions/0002-coordinate-conventions.md
+      - Aktuatordynamik trennen: decisions/0003-separate-actuator-dynamics.md
+      - Numerische Zustandsdarstellung: decisions/0004-numerical-state-representation.md
+      - Integrator-Schnittstelle: decisions/0005-integrator-interface.md
+      - Zustandsbehaftete Simulator-Schicht: decisions/0006-stateful-simulator.md
+      - Grenze des physikalischen Systems: decisions/0007-physical-system-boundary.md
+      - Lageregler außerhalb der Systemschicht: decisions/0008-attitude-controller-boundary.md
+      - Horizontale Positionsregelung als äußerer Attitude-Regelkreis: decisions/0009-cascaded-horizontal-position-control.md
+      - Minimales Kontaktmodell für 2D-Landung: decisions/0010-minimal-landing-contact-model.md
+  - Entwicklung:
+      - Installation: development/setup.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js

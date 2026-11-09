@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rocket-hopper-fast-sim"
+version = "0.1.0"
+description = "Fast, mathematically transparent simulator for the Rocket Hopper project"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy",
+    "matplotlib",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9,<10",
+]
+docs = [
+    "mkdocs-material>=9,<10",
+    "pymdown-extensions",
+]
+viz = [
+    "matplotlib"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.setuptools.packages.find]
+where = ["src"]
